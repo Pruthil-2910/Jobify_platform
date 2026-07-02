@@ -1,7 +1,8 @@
 from fastapi import FastAPI
+from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI(title="TrackHire AI")
+app = FastAPI(title="Jobify")
 
 app.add_middleware(
     CORSMiddleware,
@@ -11,6 +12,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.add_middleware(GZipMiddleware, minimum_size=1000)
 
 @app.get("/health")
 def health():
