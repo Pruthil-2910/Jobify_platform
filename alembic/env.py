@@ -18,7 +18,7 @@ if config.config_file_name is not None:
 target_metadata = Base.metadata
 
 
-def run_migrations_offline() -> None:
+def run_migrations_offline() -> None: 
     context.configure(
         url=settings.DATABASE_URL,
         target_metadata=target_metadata,
@@ -40,7 +40,7 @@ async def run_migrations_online() -> None:
     connectable = create_async_engine(
         settings.DATABASE_URL,
         poolclass=pool.NullPool,
-        connect_args={"statement_cache_size": 0},
+        connect_args={"statement_cache_size": 0}, # Disable statement caching for async engines
     )
     async with connectable.connect() as connection:
         await connection.run_sync(do_run_migrations)

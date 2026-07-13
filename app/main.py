@@ -7,13 +7,13 @@ app = FastAPI(title="Jobify")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["http://localhost:5173"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_credentials=True, # Access-Control-Allow-Credentials like cookies
+    allow_methods=["*"], # GET, POST, PUT, DELETE, OPTIONS
+    allow_headers=["*"], # Access-Control-Allow-Headers like Content-Type, Authorization
 )
 
-app.add_middleware(GZipMiddleware, minimum_size=1000)
+app.add_middleware(GZipMiddleware, minimum_size=1000) # Compress responses larger than 1000 bytes
 
-@app.get("/health")
+@app.get("/health") # health check endpoint
 def health():
     return {"status": "ok"}
