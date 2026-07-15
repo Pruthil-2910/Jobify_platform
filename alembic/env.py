@@ -8,7 +8,6 @@ from alembic import context
 
 from app.core.config import settings
 from app.models.base import Base
-from app.models import user  # noqa
 
 config = context.config
 
