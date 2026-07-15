@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.gzip import GZipMiddleware
 from fastapi.middleware.cors import CORSMiddleware
+from app.api.routes.auth import router as auth_router
 
 app = FastAPI(title="Jobify")
 
@@ -13,6 +14,7 @@ app.add_middleware(
 )
 
 app.add_middleware(GZipMiddleware, minimum_size=1000) # Compress responses larger than 1000 bytes
+app.include_router(auth_router)
 
 @app.get("/health") # health check endpoint
 def health():
