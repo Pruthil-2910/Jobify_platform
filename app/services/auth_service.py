@@ -15,7 +15,7 @@ async def register_user(db: AsyncSession, data: UserCreate) -> UserResponse:
     hashed_password = hash_password(data.password)
 
     new_user = User(
-        fullname=data.full_name,      
+        fullname=data.fullname,      
         email=data.email,
         hashed_password=hashed_password,
     )
