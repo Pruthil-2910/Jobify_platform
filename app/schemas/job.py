@@ -21,3 +21,11 @@ class JobResponse(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
+class JobListResponse(BaseModel):
+    jobs: list[JobResponse]
+    total: int
+    offset: int
+    limit: int
+
+
+    model_config = ConfigDict(from_attributes=True)
