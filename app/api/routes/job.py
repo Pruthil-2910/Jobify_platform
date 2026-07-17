@@ -15,10 +15,10 @@ router = APIRouter(prefix="/jobs", tags=["jobs"])
 async def get_all_jobs(
     offset: int = Query(0, ge=0),
     limit: int = Query(20, ge=1, le=100),
-    db: AsyncSession = Depends(get_db),
+    db: AsyncSession = Depends(get_db), 
 ):
     jobs, total = await job_service.get_all_jobs(db, offset=offset, limit=limit)
-    return JobListResponse(items=jobs, total=total, offset=offset, limit=limit)
+    return JobListResponse(jobs=jobs, total=total, offset=offset, limit=limit)
 
 @router.get("/{job_id}", response_model=JobResponse)
 async def get_job_by_id(job_id: uuid.UUID, db: AsyncSession = Depends(get_db)):
