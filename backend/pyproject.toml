@@ -16,3 +16,11 @@ dependencies = [
     "pyjwt>=2.13.0",
     "sqlalchemy>=2.0.51",
 ]
+
+[dependency-groups]
+dev = [
+    "aiosqlite>=0.22.1",
+    "httpx>=0.28.1",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
+]
